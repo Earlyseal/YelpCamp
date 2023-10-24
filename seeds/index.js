@@ -3,12 +3,12 @@ const cities = require('./cities');
 const { places, descriptors } = require('./seedHelpers')
 const Campground = require('../models/campground')
 
-
-mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp');
+const dbUrl = process.env.DB_URL;
+// mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp');
 main().catch(err => console.log(err));
 
 async function main() {
-    await mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp');
+    await mongoose.connect(dbUrl);
     console.log("MONGO CONNECTION OPEN");
     // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
 };
